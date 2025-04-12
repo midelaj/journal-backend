@@ -4,12 +4,11 @@ const User = require("../models/user.model");
 require("dotenv").config();
 
 const options = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), 
-    secretOrKey: process.env.JWT_SECRET,
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: process.env.JWT_SECRET,
 };
 
 passport.use(
-
   new Strategy(options, async (payload, done) => {
     try {
       const user = await User.findById(payload.id);
@@ -19,7 +18,6 @@ passport.use(
       return done(error, false);
     }
   })
-
 );
 
 module.exports = passport;

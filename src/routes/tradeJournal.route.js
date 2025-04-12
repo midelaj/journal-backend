@@ -2,17 +2,15 @@ const express = require("express");
 const route = express.Router();
 
 const {
-  createTradeJournal,
-  getAllTradeJournals,
-  getTradeJournal,
-  updateTradeJournal,
-  deleteTradeJournal,
-} = require("../controllers/tradeJournal.controller");
+  createJournal,
+  updateJournal,
+  getAllJournal,
+  updateAllJournal,
+} = require("../controllers/journalController");
 
-route.post("/", createTradeJournal);
-route.get("/", getAllTradeJournals);
-route.get("/:id", getTradeJournal);
-route.put("/:id", updateTradeJournal);
-route.delete("/:id", deleteTradeJournal);
+route.post("/trade", createJournal);
+route.put("/trade/:id", updateJournal);
+route.get("/trade", getAllJournal);
+route.put("/trade", updateAllJournal);
 
 module.exports = route;
